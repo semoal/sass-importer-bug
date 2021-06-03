@@ -3,13 +3,17 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "private": true,
   "scripts": {
-    "test": "node run.js"
+    "test": "yarn workspace @project/code run test"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "sass": "^1.34.1"
-  }
+  },
+  "workspaces": [
+    "packages/**"
+  ]
 }

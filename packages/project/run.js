@@ -7,13 +7,9 @@ const renderSass = promisify(sass.render);
 async function run() {
   const res = await renderSass({
     file: path.join(__dirname, "src", "index.scss"),
-    importer: async (url, prev, done) => {
-      if (/my-aliased/.test(url)) {
-        const resolved = path.join(__dirname, "src", "foo.scss");
-        console.log("--> rewriting", url, "to", resolved, "\n");
-        done({ file: resolved });
-      }
-    },
+    includePaths: [
+      "../../node_modules"
+    ]
   });
 
   console.log("SUCCESS", res);

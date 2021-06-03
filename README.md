@@ -1,15 +1,23 @@
-# sass `importer` not working
+# sass monorepo ~ not working
 
 Steps to reproduce
 
 1. Clone repo
-2. install packages via `npm install`
-3. run `npm test`
+2. install packages via `yarn`
+3. run `yarn test`
 
 ## Expected outcome
 
-Running `npm test` prints `SUCCESS`.
+Running `yarn test` prints `SUCCESS`.
 
 ## Actual outcome
 
-Sass calls the custom importer but seems to ignore the result. It then errors because it cannot find the `$color` variable, which is only present in the file that was resolved in the custom importer.
+Sass says:
+```sh
+(node:88871) UnhandledPromiseRejectionWarning: Error: Can't find stylesheet to import.
+  ╷
+1 │ @import "~@project/css/index.scss";
+  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+  src/index.scss 1:9  root stylesheet
+```
